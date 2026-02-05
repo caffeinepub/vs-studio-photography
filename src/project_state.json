@@ -1,11 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "Create a website for VS Studio Photography (owner Vikky Kumar) to promote services and enable bookings.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Minimal monochrome studio logo mark with camera/monogram feel, text “VS Studio Photography” (vs-studio-logo.dim_512x512.png)\n- Wide cinematic hero banner photo-style background with subtle bokeh/light leaks, no readable text (vs-studio-hero.dim_1920x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-01.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-02.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-03.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-04.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-05.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-06.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-07.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-08.dim_1200x800.png)\n- Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-09.dim_1200x800.png)",
   "existing_features": [
     {
       "id": "feature-create-a-responsive-multi-page-marketing-website-for-vs-studio-photography-that-prominently-displays-the-business-name-owner-name-vikky-kumar-contact-phone-7070945104-email-vscomputer7070-gmail-com-and-address-etwarpur-nizamat-chowk-lalganj-vaishali-bihar-844121",
@@ -54,6 +53,38 @@
         "REQ-7"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-page-that-lists-all-stored-booking-inquiries-from-the-backend-and-renders-them-in-an-easy-to-scan-table-list-at-minimum-name-phone-event-type-preferred-date-submitted-timestamp-and-the-booking-id",
+      "title": "Add an Admin page that lists all stored booking inquiries from the backend and renders them in an easy-to-scan table/list (at minimum: name, phone, event type, preferred date, submitted timestamp, and the booking id).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-expose-navigation-to-the-admin-page-from-the-existing-ui-e-g-add-an-admin-entry-in-the-header-navigation-or-an-admin-link-in-the-footer-and-ensure-navigation-scrolls-to-the-top-consistently-with-existing-navigation-behavior",
+      "title": "Expose navigation to the Admin page from the existing UI (e.g., add an 'Admin' entry in the header navigation or an 'Admin' link in the footer) and ensure navigation scrolls to the top consistently with existing navigation behavior.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-booking-management-actions-on-the-admin-page-allow-deleting-a-booking-inquiry-and-refreshing-the-list-after-deletion",
+      "title": "Add basic booking management actions on the Admin page: allow deleting a booking inquiry and refreshing the list after deletion.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-backend-booking-list-is-presented-in-a-useful-order-on-the-admin-page-newest-first-without-breaking-existing-booking-submission-behavior",
+      "title": "Ensure the backend booking list is presented in a useful order on the Admin page (newest first) without breaking existing booking submission behavior.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -69,6 +100,12 @@
       "reqIds": [
         "REQ-4"
       ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add an admin page/dashboard to view stored booking inquiries submitted via the Book Now form (read/retrieve entries).",
+      "reqIds": [],
       "status": "pending"
     }
   ],

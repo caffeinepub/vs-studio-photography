@@ -2,7 +2,9 @@ import Array "mo:core/Array";
 import Text "mo:core/Text";
 import Map "mo:core/Map";
 import Runtime "mo:core/Runtime";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
   type Booking = {
     id : Nat;

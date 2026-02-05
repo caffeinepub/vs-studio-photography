@@ -1,88 +1,35 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T19:48:48.850Z",
-  "summary": "Most frontend marketing-site requirements appear implemented (multi-page navigation, themed UI, contact info, gallery placeholders, SEO meta). However, the booking form and backend API/storage diverge from the spec: preferred date is treated as required (but should be optional), and backend persistence is not in stable state nor sorted newest-first. Several extra backend/admin-related APIs/hooks were added that were not requested.",
-  "missing_requirements": [
-    {
-      "id": "REQ-3",
-      "requirement": "Preferred Date must be optional in the booking inquiry form (client-side validation should only require Name, Phone, Event Type).",
-      "reason": "The diff shows client-side validation preventing submission when preferredDate is empty, making it required. This contradicts the requirement/AC that Preferred Date is optional.",
-      "evidence": [
-        "frontend/src/components/BookingForm.tsx"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "requirement": "Persist booking inquiries in stable state in the single Motoko actor, and include timestamp + all submitted fields.",
-      "reason": "Backend uses an in-memory Map (`let bookings = Map.empty...`) and non-stable variables; no `stable` storage is shown, so data would not persist across upgrades as required.",
-      "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "requirement": "Backend query method should list booking inquiries newest first (or otherwise ordered as specified).",
-      "reason": "`listAllBookings()` returns `bookings.values().toArray()` with no ordering logic; Map iteration order is not shown to be newest-first.",
-      "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "requirement": "Generated image assets (logo, hero, and 9 gallery placeholders) must be placed under `frontend/public/assets/generated` and used on Home/Gallery.",
-      "reason": "Frontend references the expected asset paths, but the diff summary does not show any added files under `frontend/public/assets/generated` (the only omitted added file is unspecified, and the listed added files are code/config).",
-      "evidence": [
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/GalleryPage.tsx"
-      ]
-    }
-  ],
+  "generatedAt": "2026-02-05T20:55:02.277Z",
+  "summary": "REQ-8/9/10/11 appear implemented: a new Admin page is added, reachable via header navigation, uses React Query hooks to load bookings with loading/empty/error states, supports delete with query invalidation, and sorts bookings newest-first on the page. One notable unrequested addition is a backend migration module/file, which also appears to violate the stated constraint to keep Motoko logic in backend/main.mo only.",
+  "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Backend supports deleting bookings via `deleteBooking` API.",
-      "reason": "The BuildRequest only asks for create and list (for future admin use). Delete functionality is additional and not requested.",
+      "description": "Added a backend migration module/file and hooked it into the canister actor, despite the constraint to keep Motoko logic in a single actor file (backend/main.mo) and not add additional backend services/modules.",
+      "reason": "BuildRequest constraints specify keeping all Motoko logic in backend/main.mo; the diff adds backend/migration.mo and imports/uses it in backend/main.mo.",
       "evidence": [
+        "backend/migration.mo",
         "backend/main.mo"
       ]
     },
     {
-      "description": "Backend supports fetching a single booking by id via `getBooking`.",
-      "reason": "The BuildRequest only requires a query method to list booking inquiries; single-record retrieval was not requested.",
+      "description": "Admin UI includes additional fields/icons (e.g., Email column and related UI elements) beyond the minimum required fields.",
+      "reason": "REQ-8 specifies at minimum: id, name, phone, event type, preferred date, submitted timestamp; the Admin page headings include Email and imports Mail-related iconography.",
       "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "description": "Frontend added data-fetching hooks for listing/getting bookings (admin-style queries).",
-      "reason": "The scope only required a public booking form submission flow; listing/retrieval hooks were not requested for the marketing site UX in this scope.",
-      "evidence": [
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/pages/AdminPage.tsx"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.72,
   "changed_files": [
-    "all_files_summary.json",
     "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
     "frontend/src/App.tsx",
-    "frontend/src/components/BookingForm.tsx",
-    "frontend/src/components/SiteFooter.tsx",
     "frontend/src/components/SiteHeader.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/hooks/useSubmitBooking.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/GalleryPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/ServicesPage.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/hooks/useDeleteBooking.ts",
+    "frontend/src/pages/AdminPage.tsx",
     "project_state.json"
   ]
 }

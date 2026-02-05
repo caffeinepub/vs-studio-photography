@@ -1,7 +1,7 @@
 import { Camera, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
-type Page = 'home' | 'services' | 'gallery' | 'contact';
+type Page = 'home' | 'services' | 'gallery' | 'contact' | 'admin';
 
 interface SiteHeaderProps {
   currentPage: Page;
@@ -16,6 +16,7 @@ export default function SiteHeader({ currentPage, onNavigate }: SiteHeaderProps)
     { label: 'Services', page: 'services' },
     { label: 'Gallery', page: 'gallery' },
     { label: 'Contact', page: 'contact' },
+    { label: 'Admin', page: 'admin' },
   ];
 
   const handleNavigate = (page: Page) => {

@@ -1,15 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a responsive multi-page marketing website for VS Studio Photography with a gallery and a working Book Now/contact form that stores inquiries in a single Motoko backend actor.
+**Goal:** Add an in-app Admin dashboard page so the site owner can view and manage stored booking inquiries.
 
 **Planned changes:**
-- Create pages/sections: Home (hero + “Book Now” CTA), Services, Gallery, and Contact/Book Now, with navigation between them.
-- Display business details prominently (VS Studio Photography, owner Vikky Kumar, phone 7070945104, email vscomputer7070@gmail.com, address Etwarpur Nizamat Chowk, Lalganj, Vaishali, Bihar 844121) in the header/footer and on the contact page.
-- Implement a booking inquiry form with fields: Name (required), Phone (required), Email (optional), Event Type (required), Preferred Date (optional), Message/Notes (optional), with client-side validation and clear success/failure states.
-- Add backend APIs in a single Motoko actor to create and persist booking inquiries (stable storage) and to list inquiries (e.g., newest first), including timestamps and all submitted fields.
-- Apply a consistent photography-studio visual theme (not primarily blue/purple) with clear hover/focus states and accessible contrast.
-- Add basic SEO/sharing metadata (title includes “VS Studio Photography”, English meta description) and make phone/email clickable (tel:/mailto:) on the contact page.
-- Add generated static images under `frontend/public/assets/generated` for logo, hero/banner, and gallery placeholders, and use them on Home and Gallery.
+- Add a new Admin page that fetches booking inquiries from the backend using the existing React Query hook pattern and displays them in an easy-to-scan list/table with loading and empty states.
+- Display booking fields including: booking id, name, phone, event type, preferred date, and a human-readable submitted timestamp; sort inquiries newest-first.
+- Add a Delete action per booking that calls the existing backend delete operation and refreshes the list without a full page reload, showing an English error message on failure.
+- Expose navigation to the Admin page from the existing site UI (e.g., header or footer link) and ensure navigation scrolls to top consistent with existing behavior.
 
-**User-visible outcome:** Visitors can browse Home/Services/Gallery/Contact pages, see the studio’s contact details, view a placeholder gallery, and submit a booking inquiry via a validated form with confirmation/error feedback.
+**User-visible outcome:** The site owner can open an Admin page from within the site to review booking inquiries (newest first) and delete entries when needed.

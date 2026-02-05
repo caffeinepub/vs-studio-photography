@@ -2,8 +2,8 @@
   "frontend/src/index.css": "Global styles with warm photography studio theme using OKLCH colors (amber/gold primary, warm charcoal backgrounds) for both light and dark modes, plus custom font families (Inter and Playfair Display).",
   "frontend/tailwind.config.js": "Tailwind configuration extended with custom font families (Inter, Playfair Display), warm shadow utilities, and fade-in animation for the photography studio aesthetic.",
   "frontend/index.html": "HTML entry point with SEO metadata for VS Studio Photography and Google Fonts preconnect links for Inter and Playfair Display fonts.",
-  "frontend/src/App.tsx": "Main application component managing page navigation state and rendering the appropriate page (Home, Services, Gallery, Contact) with header and footer.",
-  "frontend/src/components/SiteHeader.tsx": "Responsive site header with logo, navigation menu, contact strip, and mobile menu toggle; includes Book Now CTA and exact business contact details.",
+  "frontend/src/App.tsx": "Main application component managing page navigation state (including new 'admin' page) and rendering the appropriate page with header and footer.",
+  "frontend/src/components/SiteHeader.tsx": "Responsive site header with logo, navigation menu (including Admin link), contact strip, and mobile menu toggle; includes Book Now CTA and exact business contact details.",
   "frontend/src/components/SiteFooter.tsx": "Site footer displaying brand information, complete contact details (phone, email, address), services list, and attribution with caffeine.ai link.",
   "frontend/src/pages/HomePage.tsx": "Home page with hero section featuring generated logo and banner, feature highlights, and prominent Book Now CTAs throughout.",
   "frontend/src/pages/ServicesPage.tsx": "Services page displaying six photography service categories (Wedding, Portrait, Event, Studio, Product, Video) with descriptions and feature lists.",
@@ -11,5 +11,7 @@
   "frontend/src/pages/ContactPage.tsx": "Contact page displaying business information (phone, email, address, hours) alongside the booking form component.",
   "frontend/src/components/BookingForm.tsx": "Booking inquiry form with client-side validation, loading states, success confirmation, and error handling; collects name, phone, email, event type, date, and message.",
   "frontend/src/hooks/useSubmitBooking.ts": "React Query mutation hook for submitting booking requests to the backend via the actor, handling loading/success/error states.",
-  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching booking data from the backend (list all bookings and get single booking by ID)."
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching booking data from the backend (list all bookings and get single booking by ID).",
+  "frontend/src/pages/AdminPage.tsx": "Admin dashboard page that displays all booking inquiries in a sortable table (desktop) or card layout (mobile), with delete functionality, loading states, and empty state handling.",
+  "frontend/src/hooks/useDeleteBooking.ts": "React Query mutation hook for deleting booking entries via the backend actor, with automatic query invalidation on success."
 }

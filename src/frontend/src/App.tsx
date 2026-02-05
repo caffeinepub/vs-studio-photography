@@ -5,8 +5,9 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 
-type Page = 'home' | 'services' | 'gallery' | 'contact';
+type Page = 'home' | 'services' | 'gallery' | 'contact' | 'admin';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -21,6 +22,8 @@ function App() {
         return <GalleryPage />;
       case 'contact':
         return <ContactPage />;
+      case 'admin':
+        return <AdminPage />;
       default:
         return <HomePage onBookNow={() => setCurrentPage('contact')} />;
     }
