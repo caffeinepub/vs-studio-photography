@@ -1,0 +1,165 @@
+{
+  "kind": "build_request",
+  "title": "VS Studio Photography marketing website with booking/contact form",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a responsive multi-page marketing website for “VS Studio Photography” that prominently displays the business name, owner name (Vikky Kumar), contact phone (7070945104), email (vscomputer7070@gmail.com), and address (Etwarpur Nizamat Chowk, Lalganj, Vaishali, Bihar 844121).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Vs studio photography \nOwner name vikky Kumar \nContact 7070945104\nEmail vscomputer7070@gmail.com \nAddress ETWARPUR NIZAMAT CHOWK LALGANJ VAISHALI BIHAR 844121"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Site header/footer (or contact section) shows the phone, email, and address exactly as provided.",
+        "All user-facing text is in English.",
+        "Layout works on mobile and desktop (no horizontal scrolling at common breakpoints)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add core website sections/pages suitable for a photography studio: Home (hero + call-to-action), Services, Gallery, and Contact/Book Now, with navigation between them.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation links exist for Home, Services, Gallery, and Contact/Book Now.",
+        "Home page includes a prominent “Book Now” call-to-action leading to the booking/contact form.",
+        "Services page lists photography offerings (copy can be generic and editable later).",
+        "Gallery page displays a grid layout of photos (using provided/generated placeholder images until real photos are added)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement a “Book Now” / booking inquiry form that collects at minimum: name, phone, optional email, event type, preferred date, message/notes; validate required fields client-side and show a clear success/failure status after submission.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Take the best quality book now2m",
+          "A website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form has fields: Name (required), Phone (required), Email (optional), Event Type (required), Preferred Date (optional), Message/Notes (optional).",
+        "Client-side validation prevents submission when required fields are missing.",
+        "On successful submission, the user sees a confirmation message and the form clears or is disabled.",
+        "On failure, the user sees an error message and can retry."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create backend storage and APIs in the single Motoko actor to persist booking inquiries submitted from the website and to retrieve them (for future admin use).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A website",
+          "Take the best quality book now2m"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes an update method to create a booking inquiry and stores it in stable state.",
+        "Backend exposes a query method to list booking inquiries (e.g., newest first).",
+        "Booking inquiry records include timestamp and all submitted fields.",
+        "No additional canisters/services are introduced (single-actor backend only)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Apply a coherent, distinctive visual theme (colors, typography, spacing, and component styling) appropriate for a photography studio, and use it consistently across all pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A consistent theme is visible across header, buttons, sections, and typography.",
+        "Theme avoids a default/plain look and does not rely on blue/purple as the primary palette.",
+        "Buttons/links have clear hover/focus states and accessible contrast."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add basic SEO and sharing metadata (document title, description) for the VS Studio Photography website.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Vs studio photography"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Document title includes “VS Studio Photography”.",
+        "Meta description is present and written in English.",
+        "Contact page clearly presents phone and email as clickable links (tel: and mailto:)."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add generated static image assets to support the initial site look (logo and hero/banner plus gallery placeholders) and render them directly from the frontend public assets (not via backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A website",
+          "Vs studio photography"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are placed under frontend/public/assets/generated and are used on the Home (hero/logo) and Gallery sections.",
+        "The site renders correctly even without user-provided real photos (placeholders display cleanly)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for all user-facing text.",
+    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
+    "Do not edit files under frontend/src/components/ui, frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx; compose them instead."
+  ],
+  "nonGoals": [
+    "Online payments or payment provider integration.",
+    "Real-time chat or messaging features.",
+    "Third-party authentication providers (other than Internet Identity); authentication is not required for the booking form in this scope.",
+    "Image upload/management dashboard for the owner (use placeholders/generated images for now)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal monochrome studio logo mark with camera/monogram feel, text “VS Studio Photography” (vs-studio-logo.dim_512x512.png)",
+      "Wide cinematic hero banner photo-style background with subtle bokeh/light leaks, no readable text (vs-studio-hero.dim_1920x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-01.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-02.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-03.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-04.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-05.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-06.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-07.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-08.dim_1200x800.png)",
+      "Set of 9 cohesive photography-themed gallery placeholder images (wedding/portrait/event motifs), no text (vs-studio-gallery-09.dim_1200x800.png)"
+    ],
+    "edits": []
+  }
+}

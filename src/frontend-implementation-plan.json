@@ -1,0 +1,224 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "VS Studio Photography marketing site (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a responsive multi-page marketing site layout that prominently displays VS Studio Photography business/owner name and exact contact details.",
+      "acceptanceCriteria": [
+        "Site header/footer (or contact section) shows the phone, email, and address exactly as provided.",
+        "All user-facing text is in English.",
+        "Layout works on mobile and desktop (no horizontal scrolling at common breakpoints)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the root app shell with a responsive header + footer that prominently displays: “VS Studio Photography”, owner name “Vikky Kumar”, phone “7070945104”, email “vscomputer7070@gmail.com”, and address “Etwarpur Nizamat Chowk, Lalganj, Vaishali, Bihar 844121” (ensure exact text). Include a main content area where required pages render."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "create",
+          "description": "Add a responsive header component that includes brand name + navigation and a compact contact strip (phone/email) suitable for mobile and desktop."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "create",
+          "description": "Add a footer component that repeats the exact address and contact details for easy discovery and consistency."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add required pages/sections (Home, Services, Gallery, Contact/Book Now) and navigation between them, including a Book Now CTA from Home.",
+      "acceptanceCriteria": [
+        "Navigation links exist for Home, Services, Gallery, and Contact/Book Now.",
+        "Home page includes a prominent “Book Now” call-to-action leading to the booking/contact form.",
+        "Services page lists photography offerings (copy can be generic and editable later).",
+        "Gallery page displays a grid layout of photos (using provided/generated placeholder images until real photos are added)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the required routes/views (Home, Services, Gallery, Contact/Book Now) into the app using a simple hash-based router (no extra dependencies) and ensure header navigation links switch views. Ensure the Home “Book Now” CTA navigates to the Contact/Book Now view."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Implement the Home page with a hero section, brand positioning, and a prominent “Book Now” CTA that navigates to the Contact/Book Now form. Render the generated hero/banner and logo assets (see REQ-7)."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "create",
+          "description": "Implement the Services page with an editable list of common photography offerings (e.g., Wedding, Portrait, Events, Studio Shoots, Product Photography), using consistent section styling per the site theme."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "create",
+          "description": "Implement the Gallery page with a responsive grid that renders the 9 generated placeholder images (see REQ-7) with clean spacing and consistent aspect ratios."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "create",
+          "description": "Implement the Contact/Book Now page that presents contact details and embeds the booking inquiry form (from REQ-3)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement a Book Now booking inquiry form with client-side validation and clear success/failure states, submitting to the backend via the existing actor hook.",
+      "acceptanceCriteria": [
+        "Form has fields: Name (required), Phone (required), Email (optional), Event Type (required), Preferred Date (optional), Message/Notes (optional).",
+        "Client-side validation prevents submission when required fields are missing.",
+        "On successful submission, the user sees a confirmation message and the form clears or is disabled.",
+        "On failure, the user sees an error message and can retry."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BookingForm.tsx",
+          "operation": "create",
+          "description": "Create the booking inquiry form UI with fields: Name (required), Phone (required), Email (optional), Event Type (required), Preferred Date (optional), Message/Notes (optional). Implement client-side validation for required fields and accessible error messaging. Use shadcn-ui form primitives (e.g., Input, Textarea, Button, Card) to provide consistent styling and interaction states across the site. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useSubmitBooking.ts",
+          "operation": "create",
+          "description": "Add a React hook that uses the existing useActor hook to call the backend submitBooking function, passing a timestamp and mapping optional Email/Message to null when empty. Expose loading/success/error state for the form UI."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Wire the BookingForm into the Contact/Book Now page, and ensure the page provides a clear success message on submission and an error message with retry affordance on failure."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply a coherent, distinctive photography-studio visual theme (non-blue/purple primary palette) consistently across all pages with accessible interaction states.",
+      "acceptanceCriteria": [
+        "A consistent theme is visible across header, buttons, sections, and typography.",
+        "Theme avoids a default/plain look and does not rely on blue/purple as the primary palette.",
+        "Buttons/links have clear hover/focus states and accessible contrast."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styling entry point imported by main.tsx. Define a cohesive theme using CSS variables/Tailwind base layers (e.g., warm charcoal background/foreground, soft neutrals, and a gold/amber accent as primary) suitable for a photography studio; include focus-visible rings, hover states, and consistent spacing/typography utilities."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (if needed) to support the chosen non-blue/purple studio palette and typography scale while staying consistent with existing variable-based color setup."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Apply consistent themed styling to navigation and the “Book Now” call-to-action (hover/focus states, contrast, responsive layout). Use shadcn-ui Button where appropriate for consistent interactions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Apply consistent themed styling to footer typography/links and spacing to avoid a default/plain look while maintaining readability and accessibility."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add basic SEO/share metadata and ensure Contact page presents clickable phone/email links.",
+      "acceptanceCriteria": [
+        "Document title includes “VS Studio Photography”.",
+        "Meta description is present and written in English.",
+        "Contact page clearly presents phone and email as clickable links (tel: and mailto:)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add/confirm document title includes “VS Studio Photography” and add an English meta description appropriate for a photography studio marketing site."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Ensure phone and email are rendered as clickable links using tel: and mailto: and that the contact details match exactly the provided values."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add and render generated static image assets (logo, hero/banner, and 9 gallery placeholders) from frontend public assets.",
+      "acceptanceCriteria": [
+        "Generated images are placed under frontend/public/assets/generated and are used on the Home (hero/logo) and Gallery sections.",
+        "The site renders correctly even without user-provided real photos (placeholders display cleanly)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/vs-studio-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add generated static asset: Minimal monochrome studio logo mark with camera/monogram feel, text “VS Studio Photography” (vs-studio-logo.dim_512x512.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-hero.dim_1920x800.png",
+          "operation": "create",
+          "description": "Add generated static asset: Wide cinematic hero banner photo-style background with subtle bokeh/light leaks, no readable text (vs-studio-hero.dim_1920x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-01.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-01.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-02.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-02.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-03.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-03.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-04.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-04.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-05.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-05.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-06.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-06.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-07.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-07.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-08.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-08.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/public/assets/generated/vs-studio-gallery-09.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated gallery placeholder image (vs-studio-gallery-09.dim_1200x800.png)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Render the generated logo and hero banner assets from frontend/public/assets/generated/vs-studio-logo.dim_512x512.png and frontend/public/assets/generated/vs-studio-hero.dim_1920x800.png with responsive sizing and appropriate alt text (English)."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Render a 3x3 (responsive) grid using the generated gallery assets from frontend/public/assets/generated/vs-studio-gallery-01.dim_1200x800.png through frontend/public/assets/generated/vs-studio-gallery-09.dim_1200x800.png, ensuring clean layout on mobile and desktop."
+        }
+      ]
+    }
+  ]
+}

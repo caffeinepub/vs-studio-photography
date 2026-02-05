@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Motoko actor managing bookings with create, read, list, and delete operations and simple field validation.",
+  "feature_evidence.json": "Feature evidence report mapping high‑level requirements to frontend source files and components with confidence levels.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose of each frontend file in the project.",
+  "frontend/index.css": "Root CSS defining OKLCH color variables, dark mode values, and applying Tailwind base styles.",
+  "frontend/index.html": "HTML entry with SEO metadata, root mount point, and Google Fonts links.",
+  "frontend/src/App.tsx": "Main React app switching pages and rendering header, footer, and selected content.",
+  "frontend/src/components/BookingForm.tsx": "Booking form with validation, success UI, and submission via useSubmitBooking.",
+  "frontend/src/components/SiteFooter.tsx": "Footer showing branding, full contact details, service list, and attribution.",
+  "frontend/src/components/SiteHeader.tsx": "Responsive header with logo, navigation, contact strip, and mobile menu toggle.",
+  "frontend/src/hooks/useActor.ts": "Creates and caches a backend actor based on the user's identity and refreshes dependent queries when the actor updates.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides context and hooks for managing Internet Identity login, stored identities, and AuthClient configuration.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching all bookings or a single booking using the backend actor.",
+  "frontend/src/hooks/useSubmitBooking.ts": "Provides a mutation hook to submit new bookings through the backend actor and invalidates the bookings list on success.",
+  "frontend/src/index.css": "TailwindCSS setup with custom light and dark theme variables and base styling for the app.",
+  "frontend/src/main.tsx": "Bootstraps the React app, setting up QueryClient and InternetIdentityProvider before rendering App.",
+  "frontend/src/pages/ContactPage.tsx": "Renders the contact page with contact details and a booking form section layout.",
+  "frontend/src/pages/GalleryPage.tsx": "Displays a grid of gallery images with a lightbox modal for viewing selected photos.",
+  "frontend/src/pages/HomePage.tsx": "Implements the homepage with a hero section, feature highlights, and calls to action for booking and contacting.",
+  "frontend/src/pages/ServicesPage.tsx": "Renders the Services page showing a grid of photography service cards with icons, descriptions, and feature lists using Tailwind styling and animations.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom colors, fonts, animations, containers, and plugins like typography and container queries.",
+  "project_state.json": "Stores project metadata, requirements, features, and image asset needs for the VS Studio Photography website."
+}
